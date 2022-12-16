@@ -1,0 +1,11 @@
+﻿@model ConsultaModel
+@{
+    ViewData["Title"] = "Confirmação de cancelamento de consulta";
+}
+
+<div class="text-center">
+    <h3>Realmente deseja cancelar a consulta para (especialidade) no dia: @Model.Data hora @Model.Horario?</h3>
+</div>
+
+<a class="btn btn-danger" role="button" asp-controller="Agendadas" asp-action="Index">Voltar</a>
+<a class="btn btn-primary" role="button" asp-controller="Agendadas" asp-action="CancelarConsulta" asp-route-id="@Model.Id">Confirmar cancelamento</a>

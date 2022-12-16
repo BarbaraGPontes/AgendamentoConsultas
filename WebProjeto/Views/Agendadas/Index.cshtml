@@ -1,0 +1,65 @@
+﻿@model List<ConsultaModel>
+@{
+    ViewData["Title"] = "Listagem de Agendamentos";
+}
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert text-center alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert text-center alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+<br/>
+<div class="text-center">
+    <h2 class="display-4">Listagem de Agendamentos</h2><br />
+
+    <table class="table table-hover" id="table-consultas">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Especialista</th>
+                <th scope="col">Especialidade</th>
+                <th scope="col">Data</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Consulta</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ConsultaModel consulta in Model)
+                {
+                    <tr>
+                        <th scope="row">@consulta.Id</th>
+                        <td>@consulta.Nome</td>
+                        <td>@consulta.Especialista</td>
+                        <td>@consulta.Especialidade</td>
+                        <td>@consulta.Data</td>
+                        <td>@consulta.Horario</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-warning" asp-route-id="@consulta.Id" asp-controller="Agendadas" asp-action="Alterar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@consulta.Id" asp-controller="Agendadas" asp-action="CancelarConsultaConfirmacao">Cancelar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="add"><td valign="top" colspan="5">Nenhuma consulta encontrada</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

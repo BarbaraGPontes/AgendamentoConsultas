@@ -1,0 +1,37 @@
+﻿@model ConsultaModel
+@{
+    ViewData["Title"] = "Editar consultas";
+}
+
+<div class="text-center">
+
+    <h2 class="display-4">Editar Consulta</h2><br />
+
+</div>
+
+<form asp-controller="Agendadas" asp-action="Alterar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <!--
+    <div class="form-group">
+        <label for="nome">Especialista</label> <!--Colocar select com as especialista que esta ligado na especialidade vindo do banco
+        <select asp-for="Especialista"></select>
+    </div>
+    -->
+
+    <div class="form-group">
+        <label for="nome">Data</label>
+        <input type="date" asp-for="Data" required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="horario">Horário</label>
+        <input type="time" asp-for="Horario" required="required" />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+
+    <button type="submit" class="btn btn-secondary" asp-controller="Agendadas" asp-action="Index">Voltar</button>
+
+</form>

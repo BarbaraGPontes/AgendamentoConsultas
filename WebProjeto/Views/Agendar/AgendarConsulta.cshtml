@@ -1,0 +1,62 @@
+﻿@model ConsultaModel
+@{
+    ViewData["Title"] = "Agendar consulta";
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert text-centeralert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert text-center alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+<div class="text-center">
+
+    <h2 class="display-4">Agendar Consulta</h2><br />
+
+</div>
+
+<form asp-controller="Agendar" asp-action="AgendarConsulta" method="post">
+    <div class="form-group">
+        <label for="nome">Nome Completo</label>
+        <input type="text" asp-for="Nome" class="form-control" required="required" placeholder="Digite seu nome completo" />
+    </div>
+
+    <div class="form-group">
+        <label for="nascimento">Data de Nascimento:</label><br />
+        <input type="date" asp-for="DataNascimento" required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="especialidade">Especialidade</label> <!--Colocar select com as especialidades listadas vindo do banco-->
+        <select asp-for="Especialidade"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="especialista">Especialista</label> <!--Colocar select com as especialista que esta ligado na especialidade vindo do banco-->
+        <select asp-for="Especialista"></select>
+    </div>
+
+    <div class="form-group">
+        <span for="data">Data</span>
+        <input type="date" asp-for="Data" required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="horario">Horário</label>
+        <input type="time" asp-for="Horario" required="required" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+    <a role="button" class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Index">Voltar</a>
+
+</form>
+

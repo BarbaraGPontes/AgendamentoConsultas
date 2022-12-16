@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0114: O membro oculta o membro herdado; palavra-chave substituta ausente
+dotnet_diagnostic.CS0114.severity = none
